@@ -43,8 +43,8 @@ class Prompt:
 
 
     def __init__(self):
-	prompt_string = ""
-	answer_string = ""
+	self.prompt_string = ""
+	self.answer_string = ""
 
     def on_changed(self, symbol: str):
         if symbol is None or symbol == "":
@@ -71,10 +71,7 @@ from nicegui.events import ValueChangeEventArguments
 ui.input("Type in string here.").bind_value(prompt, "prompt_string")
 
 
-#ui.label('Please type in your question here first. And then cut and paste it below./ 先打好你的問題在這，然後貼到下面的空格。')    
-#ui.input('Type in your Question!')    
-#ui.label('Paste here, and get ChatGPT response./ 問題或提示貼在這裡，然後得到ChatGPT AI的回答。')    
-#ui.input('Paste here', on_change=getGPTrespond)
+
 
 ui.button("Generate", on_click=lambda: prompt.on_changed("generate"))
 
