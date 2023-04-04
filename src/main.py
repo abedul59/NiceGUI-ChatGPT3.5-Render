@@ -46,7 +46,7 @@ from nicegui.events import ValueChangeEventArguments
 
 
 
-def respond(event: ValueChangeEventArguments)
+def respond(event: ValueChangeEventArguments):
     ai_reply_response = chatgpt.get_response(event.value)
     name = type(event.sender).__name__
     ui.label(f'{name}: {ai_reply_response}')
