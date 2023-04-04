@@ -45,12 +45,12 @@ class Prompt:
     def __init__(self):
         self.prompt_string = ""
         self.answer_string = ""
-        self.on_changed("")
+        #self.on_changed("")
     def on_changed(self, symbol: str):
         if symbol is None or symbol == "":
             pass
         elif symbol.lower() == "generate":
-            self.answer_string = chatgpt.get_response(prompt_string)		
+            self.answer_string = chatgpt.get_response(self.prompt_string)		
 
 prompt = Prompt()
 
