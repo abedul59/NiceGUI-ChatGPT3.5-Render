@@ -38,17 +38,23 @@ class ChatGPT:
 chatgpt = ChatGPT()
 
 
-from nicegui.events import ValueChangeEventArguments, ClickEventArguments
+from nicegui.events import ValueChangeEventArguments
 
-def show(event: ValueChangeEventArguments):
+
+
+
+
+
+
+def respond(event: ValueChangeEventArguments)
     ai_reply_response = chatgpt.get_response(event.value)
     name = type(event.sender).__name__
-    #ui.notify(f'{name}: {event.value}')
     ui.label(f'{name}: {ai_reply_response}')
-    
+
+
   
     
     
-ui.input('Text input', on_change=show)    
+ui.input('Text input', on_change=respond).on('keydown.enter')    
 
 ui.run()
