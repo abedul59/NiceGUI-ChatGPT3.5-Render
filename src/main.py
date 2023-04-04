@@ -57,9 +57,14 @@ def show(event: ValueChangeEventArguments):
     ui.notify(f'{name}: {event.value}')
     ui.label(f'{name}: {event.value}')
     
+def show2(event: ClickEventArguments):    
+    name = type(event.sender).__name__    
+    ui.label(f'{name}: {event.value}')    
+    
+    
 ui.input('Text input', on_change=show)    
 #ui.textarea(label='Text', placeholder='start typing', on_change=lambda e: result.set_text('you typed: ' + e.value))
-ui.button('Generate', on_click=show).style('width: 15em')
+ui.button('Generate', on_click=show2).style('width: 15em')
 #result = ui.label()
 #result2 = ui.label()
 ui.run()
