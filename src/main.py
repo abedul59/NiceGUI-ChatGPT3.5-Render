@@ -45,9 +45,7 @@ class Prompt:
     def __init__(self):
         self.prompt_string = ""
 	self.answer_string = ""
-        # 触发转换操作
         self.on_changed("")
-
     def on_changed(self, symbol: str):
         if symbol is None or symbol == "":
             pass
