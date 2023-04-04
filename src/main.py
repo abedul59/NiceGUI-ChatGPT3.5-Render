@@ -9,7 +9,7 @@ from nicegui import ui
 
 '''
 async def io_bound(callback: Callable, *args: any, **kwargs: any):
-    '''Makes a blocking function awaitable; pass function as first parameter and its arguments as the rest'''
+
     return await asyncio.get_event_loop().run_in_executor(None, functools.partial(callback, *args, **kwargs))
 
 
