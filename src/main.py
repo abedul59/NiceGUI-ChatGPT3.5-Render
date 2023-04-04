@@ -49,13 +49,8 @@ class Prompt:
     def on_changed(self, symbol: str):
         if symbol is None or symbol == "":
             pass
-        if symbol.lower() == "generate":
-	    ai_reply_response = chatgpt.get_response(prompt_string)
-            self.answer_string = ai_reply_response
-		
-		
-
-
+        elif symbol.lower() == "generate":
+            self.answer_string = chatgpt.get_response(prompt_string)		
 
 prompt = Prompt()
 
