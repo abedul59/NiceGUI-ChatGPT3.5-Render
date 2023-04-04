@@ -50,9 +50,16 @@ with ui.row().style('gap:10em'):
 #def update():
     #ui.notify(e.value)
     #result.set_text(e.value)
+from nicegui.events import ValueChangeEventArguments
 
-ui.textarea(label='Text', placeholder='start typing', on_change=lambda e: result.set_text('you typed: ' + e.value))
-ui.button('Generate', on_click=lambda: ui.notify("I am a cat!")).style('width: 15em')
-result = ui.label()
+def show(event: ValueChangeEventArguments):
+    name = type(event.sender).__name__
+    ui.notify(f'{name}: {event.value}')
+    ui.label(f'{name}: {event.value}')
+    
+ui.input('Text input', on_change=show)    
+#ui.textarea(label='Text', placeholder='start typing', on_change=lambda e: result.set_text('you typed: ' + e.value))
+ui.button('Generate', on_click=show).style('width: 15em')
+#result = ui.label()
 #result2 = ui.label()
 ui.run()
