@@ -38,11 +38,13 @@ chatgpt = ChatGPT()
 
 class Prompt:
 
-    prompt_string: str
-    answer_string: str
+    #prompt_string: str
+    #answer_string: str
 
 
-    def __init__(self):       
+    def __init__(self):
+        self.prompt_string = ""
+	self.answer_string = ""
         # 触发转换操作
         self.on_changed("")
 
