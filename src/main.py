@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
-import asyncio
-import functools
-import io
-from typing import Callable
-
-import replicate  # very nice API to run AI models; see https://replicate.com/
+#import asyncio
+#import functools
+#import io
+#from typing import Callable
 
 from nicegui import ui
-from nicegui.events import UploadEventArguments
 
 
+'''
 async def io_bound(callback: Callable, *args: any, **kwargs: any):
     '''Makes a blocking function awaitable; pass function as first parameter and its arguments as the rest'''
     return await asyncio.get_event_loop().run_in_executor(None, functools.partial(callback, *args, **kwargs))
@@ -30,7 +28,8 @@ async def generate_image():
     version = model.versions.get('db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf')
     prediction = await io_bound(version.predict, prompt=prompt.value)
     image.source = prediction[0]
-
+    '''
+'''
 # User Interface
 with ui.row().style('gap:10em'):
     with ui.column():
@@ -42,5 +41,15 @@ with ui.row().style('gap:10em'):
         prompt = ui.input('prompt').style('width: 20em')
         ui.button('Generate', on_click=generate_image).style('width: 15em')
         image = ui.image().style('width: 60em')
+        '''
+
+
+
+#async def generate_response():
+
+ui.textarea(label='Text', placeholder='start typing')#,
+            #on_change=lambda e: result.set_text('you typed: ' + e.value))
+ui.button('Generate', on_click=lambda e: result.set_text('you typed: ' + e.value)).style('width: 15em')
+result = ui.label()
 
 ui.run()
