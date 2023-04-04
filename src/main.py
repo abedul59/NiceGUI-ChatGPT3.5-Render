@@ -50,7 +50,7 @@ with ui.row().style('gap:10em'):
 #def update():
     #ui.notify(e.value)
     #result.set_text(e.value)
-from nicegui.events import ValueChangeEventArguments
+from nicegui.events import ValueChangeEventArguments, ClickEventArguments
 
 def show(event: ValueChangeEventArguments):
     name = type(event.sender).__name__
