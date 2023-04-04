@@ -51,14 +51,14 @@ def show(event: ValueChangeEventArguments):
     name = type(event.sender).__name__
     ui.label(f'{name}: {ai_reply_response}')
 
-'''
+
 def handle_key(e: KeyEventArguments):
     if e.key == 'f' and not e.action.repeat:
         elif e.action.keydown:
 	    
 	    ui.label(f'{name}: {ai_reply_response}')
             ui.notify('f was just pressed and show the ai response!')
-	    '''
+
 
 
 keyboard = ui.keyboard(on_key=handle_key)
