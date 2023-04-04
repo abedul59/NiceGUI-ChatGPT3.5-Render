@@ -43,6 +43,8 @@ class Prompt:
 
 
     def __init__(self):
+	prompt_string = ""
+	answer_string = ""
 
     def on_changed(self, symbol: str):
         if symbol is None or symbol == "":
