@@ -42,9 +42,9 @@ class Prompt:
     answer_string: str
 
 
-    def __init__(self):
-	self.prompt_string = ""
-	self.answer_string = ""
+    def __init__(self):       
+        # 触发转换操作
+        self.on_changed("")
 
     def on_changed(self, symbol: str):
         if symbol is None or symbol == "":
