@@ -1,8 +1,6 @@
 from nicegui import ui
 import os, openai
 
-
-
 openai.api_key = os.getenv("OPENAI_API_KEY")
 conversation = []
 
@@ -38,22 +36,16 @@ class ChatGPT:
 chatgpt = ChatGPT()
 
 
-from nicegui.events import ValueChangeEventArguments#, KeyEventArguments
+from nicegui.events import ValueChangeEventArguments
 
 
-
-
-
-
-
-def show(event: ValueChangeEventArguments):
+def getGPTrespond(event: ValueChangeEventArguments):
     ai_reply_response = chatgpt.get_response(event.value)
     name = type(event.sender).__name__
-    ui.label(f'{name}: {ai_reply_response}')
-
+    ui.label(f'ChatGPT AI: {ai_reply_response}')
 
     
-ui.input('Text input1')    
-ui.input('Text input2', on_change=show)
+ui.input('Please type in your question here first. And then cut and paste it below./先打好你的問題在這，然後貼到下面的空格。')    
+ui.input('Paste here, and get ChatGPT's response./ 問題或提示貼在這裡，然後得到ChatGPT AI的回答。', on_change=getGPTrespond)
 
 ui.run()
