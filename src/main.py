@@ -51,8 +51,8 @@ with ui.row().style('gap:10em'):
     #ui.notify(e.value)
     #result.set_text(e.value)
 
-ui.textarea(label='Text', placeholder='start typing', on_change=lambda e: result2.set_text('you typed: ' + e.value))
-ui.button('Generate', on_click=lambda: ui.notify(e.value)).style('width: 15em')
+ui.textarea(label='Text', placeholder='start typing', on_change=lambda e: result.set_text('you typed: ' + e.value))
+ui.button('Generate', on_click=lambda: ui.notify("I am a cat!")).style('width: 15em')
 result = ui.label()
-result2 = ui.label()
+#result2 = ui.label()
 ui.run()
