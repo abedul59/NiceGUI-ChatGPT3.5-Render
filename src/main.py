@@ -44,7 +44,7 @@ class Prompt:
 
     def __init__(self):
         self.prompt_string = ""
-	self.answer_string = ""
+        self.answer_string = ""
         self.on_changed("")
     def on_changed(self, symbol: str):
         if symbol is None or symbol == "":
