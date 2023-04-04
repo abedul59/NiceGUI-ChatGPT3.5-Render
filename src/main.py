@@ -55,6 +55,6 @@ def respond(event: ValueChangeEventArguments):
   
     
     
-ui.input('Text input', on_change=respond).on('keydown.enter')    
+ui.input('Text input').on('keydown.enter', respond)    
 
 ui.run()
