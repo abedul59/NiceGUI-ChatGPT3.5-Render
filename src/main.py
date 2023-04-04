@@ -38,7 +38,7 @@ class ChatGPT:
 chatgpt = ChatGPT()
 
 
-from nicegui.events import ValueChangeEventArguments
+from nicegui.events import ValueChangeEventArguments, KeyEventArguments
 
 
 
@@ -46,15 +46,26 @@ from nicegui.events import ValueChangeEventArguments
 
 
 
-def respond(event):
+def show(event: ValueChangeEventArguments):
     ai_reply_response = chatgpt.get_response(event.value)
     name = type(event.sender).__name__
     ui.label(f'{name}: {ai_reply_response}')
 
+'''
+def handle_key(e: KeyEventArguments):
+    if e.key == 'f' and not e.action.repeat:
+        elif e.action.keydown:
+	    
+	    ui.label(f'{name}: {ai_reply_response}')
+            ui.notify('f was just pressed and show the ai response!')
+	    '''
 
-  
+
+keyboard = ui.keyboard(on_key=handle_key)
+ui.label('Key events can be caught globally by using the keyboard element.')
+ui.checkbox('Track key events').bind_value_to(keyboard, 'active')  
     
-    
-ui.input('Text input').on('keydown.enter', respond)    
+ui.input('Text input1')    
+ui.input('Text input2', on_change=show)
 
 ui.run()
