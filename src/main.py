@@ -47,8 +47,11 @@ with ui.row().style('gap:10em'):
 
 #async def generate_response():
 
+def update():
+    result.set_text(e.value)
+
 ui.textarea(label='Text', placeholder='start typing', on_change=lambda e: result2.set_text('you typed: ' + e.value))
-ui.button('Generate', on_click=lambda: result.set_text('you typed: ' + e.value)).style('width: 15em')
+ui.button('Generate', on_click=lambda: update).style('width: 15em')
 result = ui.label()
 result2 = ui.label()
 ui.run()
