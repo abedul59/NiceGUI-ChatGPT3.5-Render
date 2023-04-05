@@ -10,7 +10,7 @@ class OpenaiData:
 
 odt = OpenaiData() #存放openai api key類別
 
-openai.api_key = odt.api_key_string #os.getenv("OPENAI_API_KEY")
+
 
 
 conversation = []
@@ -77,7 +77,7 @@ class Prompt2Response:
 
 
 ui.input("Type in your openai api key here.").bind_value(odt, "api_key_string")
-
+openai.api_key = odt.api_key_string #os.getenv("OPENAI_API_KEY")
 #ui.button("Save key first!", on_click=lambda: p2r.on_changed("save_api_key"))
 
 p2r= Prompt2Response()
