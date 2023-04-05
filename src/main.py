@@ -25,7 +25,7 @@ odt = OpenaiData() #存放openai api key類別
 
 ui.input("Type in your openai api key here.").bind_value(odt, "api_key_string")
 ui.button("Save api key", on_click=lambda: odt.on_changed("save_api"))
-openai.api_key = odt.api_key_string2 = odt.api_key_string#os.getenv("OPENAI_API_KEY")
+#openai.api_key = odt.api_key_string2#os.getenv("OPENAI_API_KEY")
 
 conversation = []
 
@@ -33,13 +33,15 @@ class ChatGPT:
     
 
     def __init__(self):
-        
+        self.api_key = ""
         self.messages = conversation
         self.model = os.getenv("OPENAI_MODEL", default = "gpt-3.5-turbo")
 
 
 
     def get_response(self, user_input):
+        self.api_key = odt.api_key_string2
+        openai.api_key = self.api_key
         conversation.append({"role": "user", "content": user_input})
         
 
