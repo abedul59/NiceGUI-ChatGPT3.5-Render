@@ -50,7 +50,9 @@ class Prompt:
         if symbol is None or symbol == "":
             pass
         elif symbol.lower() == "generate":
-            self.answer_string = chatgpt.get_response(self.prompt_string)		
+            self.answer_string = chatgpt.get_response(self.prompt_string)
+	    ui.label(f'ChatGPT AI: {prompt.answer_string}')#.bind_value(prompt, "answer_string")
+		
 
 prompt = Prompt()
 
@@ -70,5 +72,5 @@ ui.input("Type in string here.").bind_value(prompt, "prompt_string")
 
 ui.button("Generate", on_click=lambda: prompt.on_changed("generate"))
 
-ui.label(f'ChatGPT AI: {prompt.answer_string}')#.bind_value(prompt, "answer_string")
+
 ui.run()
