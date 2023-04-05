@@ -66,14 +66,6 @@ class ChatGPT:
 
 
 
-
-
-
-
-
-
-
-
 chatgpt = ChatGPT()
 
 class Prompt2Response:
@@ -92,17 +84,12 @@ class Prompt2Response:
             #ui.label(f'ChatGPT AI: {p2r.answer_string}')
             ui.run_javascript('window.location.reload()')	
 
-
-
 p2r= Prompt2Response()
 ui.label('Please type in your prompt/請輸入你的提示。')
 ui.input("Type in prompt.").bind_value(p2r, "prompt_string")
 
 ui.button("Generate", on_click=lambda: p2r.on_changed("generate"))
 
-#.bind_value(prompt, "answer_string")
+
 ui.run(title="NiceGUI-ChatGPT3.5-Render demo")
-
-
-
 
