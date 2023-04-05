@@ -2,6 +2,17 @@ from nicegui import ui
 import os, openai
 
 #openai.api_key = os.getenv("OPENAI_API_KEY")
+
+
+class OpenaiData:
+    def __init__(self):
+        self.api_key_string = ""    
+
+odt = OpenaiData() #存放openai api key類別
+
+openai.api_key = odt.api_key_string #os.getenv("OPENAI_API_KEY")
+
+
 conversation = []
 
 class ChatGPT:  
@@ -35,13 +46,14 @@ class ChatGPT:
 
 
 
-class OpenaiData:
-    def __init__(self):
-        self.api_key_string = ""    
 
-odt = OpenaiData() #存放openai api key類別
 
-openai.api_key = odt.api_key_string #os.getenv("OPENAI_API_KEY")
+
+
+
+
+
+
 chatgpt = ChatGPT()
 
 class Prompt2Response:
@@ -61,14 +73,14 @@ class Prompt2Response:
             ui.run_javascript('window.location.reload()')	
 
 
-p2r= Prompt2Response()
+
 
 
 ui.input("Type in your openai api key here.").bind_value(odt, "api_key_string")
 
 #ui.button("Save key first!", on_click=lambda: p2r.on_changed("save_api_key"))
 
-
+p2r= Prompt2Response()
 
 ui.input("Type in prompt here.").bind_value(p2r, "prompt_string")
 
