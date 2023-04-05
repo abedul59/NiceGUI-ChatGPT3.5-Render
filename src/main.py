@@ -36,6 +36,7 @@ class ChatGPT:
 chatgpt = ChatGPT()
 
 
+
 class Prompt:
 
     #prompt_string: str
@@ -45,13 +46,15 @@ class Prompt:
     def __init__(self):
         self.prompt_string = ""
         self.answer_string = ""
-        #self.on_changed("")
+        self.on_changed("")
     def on_changed(self, symbol: str):
         if symbol is None or symbol == "":
             pass
         elif symbol.lower() == "generate":
             self.answer_string = chatgpt.get_response(self.prompt_string)
-	    ui.label(f'ChatGPT AI: {prompt.answer_string}')#.bind_value(prompt, "answer_string")
+            ui.label(f'ChatGPT AI: {prompt.answer_string}')
+
+
 		
 
 prompt = Prompt()
