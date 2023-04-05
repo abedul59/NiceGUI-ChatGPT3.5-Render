@@ -7,21 +7,24 @@ import os, openai
 class OpenaiData:
     def __init__(self):
         self.api_key_string = ""    
-        self.api_key_string2 = "" 
+        self.api_key_string2 = ""
+        self.on_changed("")
     def on_changed(self, symbol: str):
         if symbol is None or symbol == "":
             pass
 
         elif symbol.lower() == "save_api":
-            print(self.api_key_string)
-            self.api_key_string2 = self.api_key_string
 
+            self.api_key_string2 = self.api_key_string
+            print(self.api_key_string)
 
 
 odt = OpenaiData() #存放openai api key類別
 
 
-
+ui.input("Type in your openai api key here.").bind_value(odt, "api_key_string")
+ui.button("Save api key", on_click=lambda: odt.on_changed("save_api"))
+openai.api_key = odt.api_key_string2 #os.getenv("OPENAI_API_KEY")
 
 conversation = []
 
@@ -86,10 +89,8 @@ class Prompt2Response:
 
 
 
-ui.input("Type in your openai api key here.").bind_value(odt, "api_key_string")
-ui.button("Save api key", on_click=lambda: odt.on_changed("save_api"))
-openai.api_key = odt.api_key_string2 #os.getenv("OPENAI_API_KEY")
 
+#ui.button("Save key first!", on_click=lambda: p2r.on_changed("save_api_key"))
 
 p2r= Prompt2Response()
 
