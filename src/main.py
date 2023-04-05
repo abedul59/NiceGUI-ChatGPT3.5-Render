@@ -1,7 +1,7 @@
 from nicegui import ui
 import os, openai
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+#openai.api_key = os.getenv("OPENAI_API_KEY")
 conversation = []
 
 class ChatGPT:  
@@ -33,14 +33,18 @@ class ChatGPT:
         
         return response['choices'][0]['message']['content'].strip()
 
+
+
+class OpenaiData:
+    def __init__(self):
+        self.api_key_string = ""    
+
+odt = OpenaiData() #存放openai api key類別
+
+openai.api_key = odt.api_key_string #os.getenv("OPENAI_API_KEY")
 chatgpt = ChatGPT()
 
-
-
-class Prompt:
-
-    #prompt_string: str
-    #answer_string: str
+class Prompt2Response:
 
 
     def __init__(self):
@@ -50,31 +54,36 @@ class Prompt:
     def on_changed(self, symbol: str):
         if symbol is None or symbol == "":
             pass
+
         elif symbol.lower() == "generate":
             self.answer_string = chatgpt.get_response(self.prompt_string)
-            ui.label(f'ChatGPT AI: {prompt.answer_string}')
-            ui.run_javascript('window.location.reload()')
+            ui.label(f'ChatGPT AI: {p2r.answer_string}')
+            ui.run_javascript('window.location.reload()')	
 
 
-		
-
-prompt = Prompt()
+p2r= Prompt2Response()
 
 
-from nicegui.events import ValueChangeEventArguments
+ui.input("Type in your openai api key here.").bind_value(odt, "api_key_string")
 
+#ui.button("Save key first!", on_click=lambda: p2r.on_changed("save_api_key"))
+
+
+
+ui.input("Type in prompt here.").bind_value(p2r, "prompt_string")
+
+ui.button("Generate", on_click=lambda: p2r.on_changed("generate"))
+
+#.bind_value(prompt, "answer_string")
+ui.run(title="NiceGUI-ChatGPT3.5-Render範例")
+
+
+
+#from nicegui.events import ValueChangeEventArguments
 
 #def getGPTrespond(event: ValueChangeEventArguments):
     #ai_reply_response = chatgpt.get_response(event.value)
     #name = type(event.sender).__name__
     #ui.label(f'ChatGPT AI: {ai_reply_response}')
 
-ui.input("Type in string here.").bind_value(prompt, "prompt_string")
 
-
-
-
-ui.button("Generate", on_click=lambda: prompt.on_changed("generate"))
-
-
-ui.run()
