@@ -16,7 +16,8 @@ class OpenaiData:
         elif symbol.lower() == "save_api":
 
             self.api_key_string2 = self.api_key_string
-            print(self.api_key_string)
+            print(self.api_key_string2)
+            ui.label(f'openai api key: {self.api_key_string2}')
 
 
 odt = OpenaiData() #存放openai api key類別
@@ -24,7 +25,7 @@ odt = OpenaiData() #存放openai api key類別
 
 ui.input("Type in your openai api key here.").bind_value(odt, "api_key_string")
 ui.button("Save api key", on_click=lambda: odt.on_changed("save_api"))
-openai.api_key = odt.api_key_string2 #os.getenv("OPENAI_API_KEY")
+openai.api_key = odt.api_key_string2 = odt.api_key_string#os.getenv("OPENAI_API_KEY")
 
 conversation = []
 
