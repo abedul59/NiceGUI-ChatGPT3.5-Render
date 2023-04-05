@@ -22,12 +22,12 @@ class OpenaiData:
 
 odt = OpenaiData() #存放openai api key類別
 
-
-ui.input("Type in your openai api key here.").bind_value(odt, "api_key_string")
+ui.label('Please type in your openai api key./請輸入你的openai api key。')
+ui.input("Yout api key here.").bind_value(odt, "api_key_string")
 ui.button("Save api key", on_click=lambda: odt.on_changed("save_api"))
 
 
-ui.label('Please wait for pages to save the api and reload, or bugs happened.')
+ui.label('Please wait for pages to save the api and reload, or bugs happened./ 等待5-7秒讓網頁重新載入，不然會有問題。')
 openai.api_key = odt.api_key_string2#os.getenv("OPENAI_API_KEY")
 
 conversation = []
@@ -89,32 +89,20 @@ class Prompt2Response:
 
         elif symbol.lower() == "generate":
             self.answer_string = chatgpt.get_response(self.prompt_string)
-            ui.label(f'ChatGPT AI: {p2r.answer_string}')
+            #ui.label(f'ChatGPT AI: {p2r.answer_string}')
             ui.run_javascript('window.location.reload()')	
 
 
 
-
-
-
-#ui.button("Save key first!", on_click=lambda: p2r.on_changed("save_api_key"))
-
 p2r= Prompt2Response()
-
-ui.input("Type in prompt here.").bind_value(p2r, "prompt_string")
+ui.label('Please type in your prompt/請輸入你的提示。')
+ui.input("Type in prompt.").bind_value(p2r, "prompt_string")
 
 ui.button("Generate", on_click=lambda: p2r.on_changed("generate"))
 
 #.bind_value(prompt, "answer_string")
-ui.run(title="NiceGUI-ChatGPT3.5-Render範例")
+ui.run(title="NiceGUI-ChatGPT3.5-Render demo")
 
 
-
-#from nicegui.events import ValueChangeEventArguments
-
-#def getGPTrespond(event: ValueChangeEventArguments):
-    #ai_reply_response = chatgpt.get_response(event.value)
-    #name = type(event.sender).__name__
-    #ui.label(f'ChatGPT AI: {ai_reply_response}')
 
 
