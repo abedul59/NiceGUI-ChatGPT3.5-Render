@@ -22,12 +22,12 @@ class OpenaiData:
 
 odt = OpenaiData() #存放openai api key類別
 
-ui.label('Please type in your openai api key./請輸入你的openai api key。')
+#ui.label('Please type in your openai api key./請輸入你的openai api key。')
 ui.input("Yout api key here.").bind_value(odt, "api_key_string")
 ui.button("Save api key", on_click=lambda: odt.on_changed("save_api"))
 
 
-ui.label('Please wait for pages to save the api and reload, or bugs happened./ 等待5-7秒讓網頁重新載入，不然會有問題。')
+#ui.label('Please wait for pages to save the api and reload, or bugs happened./ 等待5-7秒讓網頁重新載入，不然會有問題。')
 openai.api_key = odt.api_key_string2#os.getenv("OPENAI_API_KEY")
 
 conversation = []
@@ -85,7 +85,7 @@ class Prompt2Response:
             ui.run_javascript('window.location.reload()')	
 
 p2r= Prompt2Response()
-ui.label('Please type in your prompt/請輸入你的提示。')
+#ui.label('Please type in your prompt/請輸入你的提示。')
 ui.input("Type in prompt.").bind_value(p2r, "prompt_string")
 
 ui.button("Generate", on_click=lambda: p2r.on_changed("generate"))
