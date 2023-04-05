@@ -13,8 +13,8 @@ class OpenaiData:
             pass
 
         elif symbol.lower() == "save_api":
-            print(self.api_key_string2)
-            self.api_key_string = self.api_key_string2
+            print(self.api_key_string)
+            self.api_key_string2 = self.api_key_string
 
 
 
@@ -88,8 +88,8 @@ class Prompt2Response:
 
 ui.input("Type in your openai api key here.").bind_value(odt, "api_key_string")
 ui.button("Save api key", on_click=lambda: odt.on_changed("save_api"))
-openai.api_key = odt.api_key_string #os.getenv("OPENAI_API_KEY")
-#ui.button("Save key first!", on_click=lambda: p2r.on_changed("save_api_key"))
+openai.api_key = odt.api_key_string2 #os.getenv("OPENAI_API_KEY")
+
 
 p2r= Prompt2Response()
 
