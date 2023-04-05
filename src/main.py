@@ -41,7 +41,7 @@ class ChatGPT:
 
     def get_response(self, user_input):
         self.api_key = odt.api_key_string2
-        #ui.label(f'openai api key2: {self.api_key}')
+        ui.label(f'openai api key2: {self.api_key}')
         openai.api_key = self.api_key
         conversation.append({"role": "user", "content": user_input})
         
