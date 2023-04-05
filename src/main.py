@@ -53,7 +53,7 @@ class Prompt:
         elif symbol.lower() == "generate":
             self.answer_string = chatgpt.get_response(self.prompt_string)
             ui.label(f'ChatGPT AI: {prompt.answer_string}')
-            ui.run_javascript(window.location.reload())
+            ui.run_javascript('window.location.reload()')
 
 
 		
