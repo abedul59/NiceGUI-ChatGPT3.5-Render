@@ -101,7 +101,7 @@ ui.input("Type in prompt here.").bind_value(p2r, "prompt_string")
 ui.button("Generate", on_click=lambda: p2r.on_changed("generate"))
 
 
-ui.run(title="NiceGUI-ChatGPT3.5-Render範例")
+ui.run(title="NiceGUI-ChatGPT3.5-Render ")
 
 
 
