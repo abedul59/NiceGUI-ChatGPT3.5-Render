@@ -41,7 +41,7 @@ class ChatGPT:
 
     def get_response(self, user_input):
         self.api_key = odt.api_key_string2
-        ui.label(f'openai api key2: {self.api_key}')
+        ui.label(f'openai api key已再度載入。')
         openai.api_key = self.api_key
         conversation.append({"role": "user", "content": user_input})
         
@@ -86,7 +86,7 @@ class Prompt2Response:
 
         elif symbol.lower() == "generate":
             self.answer_string = chatgpt.get_response(self.prompt_string)
-            ui.label(f'openai api key已再度載入。')
+            ui.label(f'ChatGPT AI: {p2r.answer_string}')
             ui.run_javascript('window.location.reload()')	
 
 
@@ -100,8 +100,8 @@ ui.input("Type in prompt here.").bind_value(p2r, "prompt_string")
 
 ui.button("Generate", on_click=lambda: p2r.on_changed("generate"))
 
-
-ui.run(title="NiceGUI-ChatGPT3.5-Render ")
+#.bind_value(prompt, "answer_string")
+ui.run(title="NiceGUI-ChatGPT3.5-Render範例")
 
 
 
